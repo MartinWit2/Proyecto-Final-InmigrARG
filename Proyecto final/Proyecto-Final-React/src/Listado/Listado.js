@@ -1,35 +1,33 @@
 import "./Listado.css";
-import React, { useState } from 'react';
+import React from "react";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
-
-
-function Listado() {
- 
- 
-    const [viviendas, setViviendas] = useState([])
-
-    const listaViviendas= ()=>{
-      setViviendas([
-        { id: 1, titulo: 'Casa en la playa', descripcion: 'Hermosa casa con vista al mar', precio: 200000 },
-      {id: 2, titulo: 'Apartamento en la ciudad', descripcion: 'Acogedor apartamento en el centro de la ciudad', precio: 150000},])
-    }
-
-   
-  return (
-    <div>
-      <h1>Lista de Viviendas</h1>
-      <button onClick={listaViviendas}>Hacer Click</button>
-      {viviendas.map(vivienda => (
-        <div key={vivienda.id}>
-          <h2>{vivienda.titulo}</h2>
-          <p>{vivienda.descripcion}</p>
-          <p>Precio: {vivienda.precio}</p>
-          <hr />
-        </div>
-      ))}
-    </div>
-  );
+const Listado = ({ Vivienda }) => {
+  if(Array.isArray(Vivienda)){
+    return Vivienda.map((viv) => {
+      const direccion = viv.Direccion;
+      const desc = viv.Descripcion;
+      const m2=viv.MetrosCuadradosTotales;
+      const cocheras = viv.Cocheras;
+      const ambientes = viv.Ambientes;
+    return(
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src="{Vivienda.Imagen}" />
+      <Card.Body>
+        <Card.Title>{direccion}</Card.Title>
+        <Card.Text>{desc}</Card.Text>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item>m2:{m2}</ListGroup.Item>
+        <ListGroup.Item>cocheras:{cocheras}</ListGroup.Item>
+        <ListGroup.Item>Ambientes:{ambientes}</ListGroup.Item>
+      </ListGroup>
+    </Card>
+    )
+  });
+  }
+  return null;
 };
 
 export default Listado;
-
