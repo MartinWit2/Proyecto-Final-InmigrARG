@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 app.use(express.json());
 app.get('/', (req,res) => {
-    res.send('Hello World bro');
+    res.send('Hello World');
 })
 
 app.listen (port, () =>{
@@ -33,7 +33,7 @@ app.post('/Vivienda', async(req,res) =>{
         res.status(200).json({message : 'Vivienda creada'});
     } catch (error){
         console.error(error);
-        res.status(500).json({error:'Fallo el insert browli'});
+        res.status(500).json({error:'Fallo el insert'});
     }
 })
 //UPDATE
@@ -44,7 +44,7 @@ app.put('/Vivienda/:id',async (req,res) => {
         res.status(200).json({message : 'Vivienda actualizada'});
     } catch (error){
         console.error(error);
-        res.status(500).json({error:'Fallo el Update browli'});
+        res.status(500).json({error:'Fallo el Update'});
     }
 })
 //
@@ -55,7 +55,7 @@ app.delete ('/Vivienda/:id',async (req,res) => {
         res.status(200).json({message : 'Vivienda eliminada'});
     } catch (error){
         console.error(error);
-        res.status(500).json({error:'Fallo el Delete browli'});
+        res.status(500).json({error:'Fallo el Delete'});
     }
 })
 
