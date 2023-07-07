@@ -7,14 +7,18 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [Vivienda, setViviendas] = useState([]);
+
   
   useEffect(() => {
-    const obtenerHoteles= async() =>{
-      const url = 'http://localhost5000/Vivienda';
-      const result = await axios.get(url);
-      setViviendas(result.data);
-    }
-    obtenerHoteles()
+    //const obtenerHoteles= async() =>{
+      
+    const url = 'http://localhost:5000/Vivienda';
+      axios.get(url) 
+      .then((result) => {
+        console.log(result.data);
+        setViviendas(result.data);
+      });      
+    //}
   },[]);
 
   return (
