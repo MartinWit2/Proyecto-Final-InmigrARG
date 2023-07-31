@@ -4,7 +4,9 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const Listado = ({ Vivienda }) => {
+ 
   if(Array.isArray(Vivienda)){
+    console.log("entre")
     return Vivienda.map((viv) => {
       const imagen = viv.imagen
       const direccion = viv.Direccion;
@@ -12,9 +14,11 @@ const Listado = ({ Vivienda }) => {
       const m2=viv.MetrosCuadradosTotales;
       const cocheras = viv.Cocheras;
       const ambientes = viv.Ambientes;
+      
     return(
+      
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src='{imagen}'/>
+      <Card.Img variant="top" src={imagen}/>
       <Card.Body>
         <Card.Title>{direccion}</Card.Title>
         <Card.Text>{desc}</Card.Text>
