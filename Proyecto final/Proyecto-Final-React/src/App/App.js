@@ -4,7 +4,7 @@ import logo from "../logo.svg";
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import {BrowserRouter, routes, route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
   const [Vivienda, setViviendas] = useState([]);
@@ -25,20 +25,20 @@ function App() {
   useEffect(() => {
     const obtenerViviendas = async () => {
     const url = 'http://localhost:5000/Vivienda';
+    console.log("fui a la api");
     const result = await axios.get(url);
     setViviendas(result.data);
     }
-    obtenerViviendas()
+    
+  
     }, []);
 
   return (
     <>
-    <BrowserRouter>
-    <routes>
-      <route path="/Listado" element={<Listado Vivienda={Vivienda}></Listado>}></route>
-      <route path="/Listado" element={<FormVivienda></FormVivienda>}></route>
-    </routes>
-    </BrowserRouter>
+   <div>
+    <Listado Vivienda={Vivienda}></Listado>
+    <FormVivienda></FormVivienda>
+   </div>
       
       
     </>

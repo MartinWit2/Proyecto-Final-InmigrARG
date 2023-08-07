@@ -6,14 +6,16 @@ import ListGroup from "react-bootstrap/ListGroup";
 const Listado = ({ Vivienda }) => {
  
   if(Array.isArray(Vivienda)){
-    console.log("entre")
-    return Vivienda.map((viv) => {
+    console.log("entre al if")
+     return Vivienda.map((viv) => {
+      console.log("map");
       const imagen = viv.imagen
       const direccion = viv.Direccion;
       const desc = viv.Descripcion;
       const m2=viv.MetrosCuadradosTotales;
       const cocheras = viv.Cocheras;
       const ambientes = viv.Ambientes;
+      console.log(ambientes);
       
     return(
       

@@ -1,46 +1,118 @@
-import "./FormVivienda.css";
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-
-
 function FormVivienda() {
+  const [objVivienda, setObjVivienda] = useState({});
 
-   
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setObjVivienda((prevObj) => ({
+      ...prevObj,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aquí puedes hacer algo con el objeto objVivienda, como enviarlo al servidor.
+    console.log(objVivienda);
+  };
+
   return (
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    <label for="input1">Direccion</label>
-    <input type="text" id="input1" name="input1" required></input>
+    <Form onSubmit={handleSubmit} className="FormVivienda">
+      <Form.Group controlId="input1">
+        <Form.Label>Dirección</Form.Label>
+        <Form.Control
+          type="text"
+          name="direccion"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input2">desc</label>
-    <input type="text" id="input2" name="input2" required></input>
+      <Form.Group controlId="input2">
+        <Form.Label>Descripción</Form.Label>
+        <Form.Control
+          type="text"
+          name="descripcion"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input3">m2</label>
-    <input type="text" id="input3" name="input3" required></input>
+      <Form.Group controlId="input3">
+        <Form.Label>m2</Form.Label>
+        <Form.Control
+          type="text"
+          name="metrosCuadrados"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input4">cocheras</label>
-    <input type="text" id="input4" name="input4" required></input>
+      <Form.Group controlId="input4">
+        <Form.Label>Cocheras</Form.Label>
+        <Form.Control
+          type="text"
+          name="cocheras"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input5">ambientes</label>
-    <input type="text" id="input5" name="input5" required></input>
+      <Form.Group controlId="input5">
+        <Form.Label>Ambientes</Form.Label>
+        <Form.Control
+          type="text"
+          name="ambientes"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input6">Input 6:</label>
-    <input type="text" id="input6" name="input6" required></input>
+      <Form.Group controlId="input6">
+        <Form.Label>Input 6:</Form.Label>
+        <Form.Control
+          type="text"
+          name="input6"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input7">Input 7:</label>
-    <input type="text" id="input7" name="input7" required></input>
+      <Form.Group controlId="input7">
+        <Form.Label>Input 7:</Form.Label>
+        <Form.Control
+          type="text"
+          name="input7"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="input8">Input 8:</label>
-    <input type="text" id="input8" name="input8" required></input>
+      <Form.Group controlId="input8">
+        <Form.Label>Input 8:</Form.Label>
+        <Form.Control
+          type="text"
+          name="input8"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
 
-    <label for="imageInput">Subir Imagen:</label>
-    <input type="file" id="imageInput" name="imageInput" accept="image/*" required></input>
+      <Form.Group controlId="imageInput">
+        <Form.Label>Subir Imagen (opcional):</Form.Label>
+        <Form.Control
+          type="file"
+          name="imagen"
+          accept="image/*"
+        />
+      </Form.Group>
 
-    <button type="submit">Enviar</button>
-  </form>
+      <Button variant="primary" type="submit">Enviar</Button>
+    </Form>
   );
-};
+}
 
 export default FormVivienda;
-
