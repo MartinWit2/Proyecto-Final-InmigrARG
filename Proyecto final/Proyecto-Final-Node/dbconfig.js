@@ -15,15 +15,15 @@ export default config;
 
 /*USE [master]
 GO
-CREATE LOGIN [proyectoUser] WITH PASSWORD=N'proyecto', DEFAULT_DATABASE=[ProyectoFinal-Inmigracion], CHECK_EXPIRATION=OFF,
+CREATE LOGIN [Inmigr] WITH PASSWORD=N'arg', DEFAULT_DATABASE=[ProyectoFinal-Inmigracion], CHECK_EXPIRATION=OFF,
 CHECK_POLICY=OFF
 GO
 
 USE [ProyectoFinal-Inmigracion]
 GO
-CREATE USER [proyectoUser] FOR LOGIN [proyectoUser]
+CREATE USER [Inmigr] FOR LOGIN [Inmigr]
 GO
 USE [ProyectoFinal-Inmigracion]
 GO
-ALTER ROLE [db_owner] ADD MEMBER [proyectoUser]
+ALTER ROLE [db_owner] ADD MEMBER [Inmigr]
 GO*/

@@ -38,10 +38,11 @@ class ViviendaServices {
             let rowsAffected = 0;
             console.log('Estoy en: ViviendaServices.insert(Vivienda)');
             try{
+                console.log("direccion: " + Vivienda);
                 let pool = await sql.connect(config);
                 let result = await pool.request()
                     .input('pDireccion',Vivienda.Direccion)
-                    .input('pIdUsuario',Vivienda.IdUsuario)
+                    .input('pIdUsuario',1/*vivienda.IdUsuario*/)
                     .input('pBarrio',Vivienda.Barrio)
                     .input('pTipoVivienda',Vivienda.TipoVivienda)
                     .input('pMetrosCuadradosTotales',Vivienda.MetrosCuadradosTotales)

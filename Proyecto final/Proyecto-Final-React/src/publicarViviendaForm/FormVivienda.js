@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function FormVivienda() {
+function FormVivienda(props) {
   const [objVivienda, setObjVivienda] = useState({});
 
   const handleInputChange = (event) => {
@@ -10,107 +10,138 @@ function FormVivienda() {
     setObjVivienda((prevObj) => ({
       ...prevObj,
       [name]: value,
+      
     }));
+    console.log(objVivienda);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Aquí puedes hacer algo con el objeto objVivienda, como enviarlo al servidor.
     console.log(objVivienda);
+    console.log("llegue");
+    props.agregarVivienda(objVivienda);
   };
+
+  
 
   return (
     <Form onSubmit={handleSubmit} className="FormVivienda">
       <Form.Group controlId="input1">
-        <Form.Label>Dirección</Form.Label>
+        <Form.Label>Dirección: </Form.Label>
         <Form.Control
           type="text"
-          name="direccion"
+          name="Direccion"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input2">
-        <Form.Label>Descripción</Form.Label>
+        <Form.Label>Barrio: </Form.Label>
         <Form.Control
           type="text"
-          name="descripcion"
+          name="Barrio"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input3">
-        <Form.Label>m2</Form.Label>
+        <Form.Label>Tipo de Vivienda: </Form.Label>
         <Form.Control
           type="text"
-          name="metrosCuadrados"
+          name="TipoVivienda"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input4">
-        <Form.Label>Cocheras</Form.Label>
+        <Form.Label>Metros Cuadrados Totales: </Form.Label>
         <Form.Control
-          type="text"
-          name="cocheras"
+          type="number"
+          name="MetrosCuadradosTotales"
+          min="1"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input5">
-        <Form.Label>Ambientes</Form.Label>
+        <Form.Label>Metros Cuadrados Cubierta: </Form.Label>
         <Form.Control
-          type="text"
-          name="ambientes"
+          type="number"
+          name="MetrosCuadradosCubierta"
+          min="1"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input6">
-        <Form.Label>Input 6:</Form.Label>
+        <Form.Label>Luminosidad: </Form.Label>
         <Form.Control
           type="text"
-          name="input6"
+          name="Luminosidad"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input7">
-        <Form.Label>Input 7:</Form.Label>
+        <Form.Label>Baños: </Form.Label>
         <Form.Control
-          type="text"
-          name="input7"
+          type="number"
+          name="Baños"
+          min="1"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="input8">
-        <Form.Label>Input 8:</Form.Label>
+        <Form.Label>Cocheras: </Form.Label>
+        <Form.Control
+          type="number"
+          name="Cocheras"
+          min="0"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="input8">
+        <Form.Label>Ambientes: </Form.Label>
+        <Form.Control
+          type="number"
+          name="Ambientes"
+          min="1"
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="input8">
+        <Form.Label>Descripción: </Form.Label>
         <Form.Control
           type="text"
-          name="input8"
+          name="Descripcion"
           onChange={handleInputChange}
           required
         />
       </Form.Group>
 
       <Form.Group controlId="imageInput">
-        <Form.Label>Subir Imagen (opcional):</Form.Label>
+        <Form.Label>Subir Imagen (Opcional):</Form.Label>
         <Form.Control
           type="file"
-          name="imagen"
+          name="Imagen"
           accept="image/*"
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">Enviar</Button>
+      <Button type="submit">Enviar</Button>
     </Form>
   );
 }

@@ -9,6 +9,14 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 function App() {
   const [Vivienda, setViviendas] = useState([]);
 
+  const agregarVivienda = (viv) => {
+    setViviendas([...Vivienda, viv]);
+    console.log(Vivienda);
+    let url = 'http://localhost:5000/Vivienda';
+    axios.post(url,viv)
+    console.log(viv);
+  
+  }
   
   /*useEffect(() => {
     //const obtenerHoteles= async() =>{
@@ -37,7 +45,7 @@ function App() {
     <>
    <div>
     <Listado Vivienda={Vivienda}></Listado>
-    <FormVivienda></FormVivienda>
+    <FormVivienda agregarVivienda={agregarVivienda}></FormVivienda>
    </div>
       
       
