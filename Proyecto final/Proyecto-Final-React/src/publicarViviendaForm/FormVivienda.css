@@ -1,33 +1,66 @@
-body {
-    font-family: Arial, sans-serif;
-  }
-  form {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  label {
-    display: block;
-    margin-top: 10px;
-  }
-  input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  input[type="file"] {
-    margin-top: 0;
-  }
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #45a049;
-  }
+.FormVivienda {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.FormVivienda label {
+  font-weight: bold;
+}
+
+.FormVivienda .form-group {
+  margin-bottom: 20px;
+}
+
+.FormVivienda .form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.FormVivienda .form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.FormVivienda input[type="file"] {
+  display: none;
+}
+
+.FormVivienda .file-upload {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.FormVivienda .file-upload:hover {
+  background-color: #0056b3;
+}
+
+.FormVivienda button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.FormVivienda button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Add more styles as needed */

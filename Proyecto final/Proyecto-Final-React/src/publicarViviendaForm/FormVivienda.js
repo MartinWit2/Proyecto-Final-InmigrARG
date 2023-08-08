@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import './FormVivienda.css'; // Asegúrate de ajustar el nombre del archivo CSS
 
 function FormVivienda(props) {
   const [objVivienda, setObjVivienda] = useState({});
@@ -10,24 +11,22 @@ function FormVivienda(props) {
     setObjVivienda((prevObj) => ({
       ...prevObj,
       [name]: value,
-      
     }));
     console.log(objVivienda);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aquí puedes hacer algo con el objeto objVivienda, como enviarlo al servidor.
     console.log(objVivienda);
     console.log("llegue");
     props.agregarVivienda(objVivienda);
   };
 
-  
-
   return (
-    <Form onSubmit={handleSubmit} className="FormVivienda">
-      <Form.Group controlId="input1">
+    <div className="FormViviendaContainer">
+      <div className="FormViviendaBox">
+        <Form onSubmit={handleSubmit} className="FormVivienda">
+        <Form.Group controlId="input1">
         <Form.Label>Dirección: </Form.Label>
         <Form.Control
           type="text"
@@ -138,11 +137,13 @@ function FormVivienda(props) {
           type="file"
           name="Imagen"
           accept="image/*"
+          onChange={handleInputChange}
         />
       </Form.Group>
-
-      <Button type="submit">Enviar</Button>
-    </Form>
+          <Button type="submit">Enviar</Button>
+        </Form>
+      </div>
+    </div>
   );
 }
 
