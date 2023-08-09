@@ -14,7 +14,8 @@ function App() {
     console.log(Vivienda);
     let url = 'http://localhost:5000/Vivienda';
     axios.post(url,viv)
-    console.log(viv);
+    setViviendas(axios.get(url))
+    console.log(Vivienda);
   
   }
   
@@ -43,13 +44,15 @@ function App() {
 
   return (
     <>
-   <div>
-    <Listado Vivienda={Vivienda}></Listado>
-    <FormVivienda agregarVivienda={agregarVivienda}></FormVivienda>
-   </div>
+   <BrowserRouter>
+    <Routes>
+    <Route path="/Viviendas" element= {<Listado Vivienda={Vivienda}></Listado>}></Route>
+    <Route path="/Form/" element={<FormVivienda agregarVivienda={agregarVivienda}></FormVivienda>}></Route>
+    </Routes>
+   </BrowserRouter>
+   </>
       
       
-    </>
   );
 }
 
