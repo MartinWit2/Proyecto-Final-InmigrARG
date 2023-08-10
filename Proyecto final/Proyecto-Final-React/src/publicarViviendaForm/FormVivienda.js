@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './FormVivienda.css'; // Asegúrate de ajustar el nombre del archivo CSS
+import { useNavigate } from 'react-router-dom';
 
 function FormVivienda(props) {
   const [objVivienda, setObjVivienda] = useState({});
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -15,11 +18,16 @@ function FormVivienda(props) {
     console.log(objVivienda);
   };
 
+  const agregarVivienda = (objVivienda) => {
+    let url = 'http://localhost:5000/Vivienda';
+    return axios.post(url,objVivienda)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(objVivienda);
-    console.log("llegue");
-    props.agregarVivienda(objVivienda);
+    agregarVivienda(objVivienda).then(() => {
+        navigate('/Viviendas');
+    });
   };
 
   return (
