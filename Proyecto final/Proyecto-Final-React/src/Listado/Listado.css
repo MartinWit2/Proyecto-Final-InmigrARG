@@ -1,50 +1,50 @@
-
-  /* Listado.css */
+/* Listado.css */
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: -10px; /* Márgenes negativos para el espaciado entre tarjetas */
-  }
-  
-  .card {
-    margin: 10px; /* Espaciado entre tarjetas */
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #48e3ee;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-img {
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  .card-title {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-  
-  .card-text {
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .list-group-item {
-    background-color: transparent;
-    border: none;
-    color: #333;
-    font-size: 0.9rem;
-    padding: 5px 0;
-  }
-  
-  
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres tarjetas por columna */
+  gap: 15px; /* Espacio entre tarjetas */
+  padding: 40px 350px; /* Espacio arriba y abajo, espacio a los costados */ 
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #48e3ee;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 300px; /* Ancho máximo para las tarjetas */
+}
+
+.card-img {
+  flex: 1;
+  height: 150px; /* Altura de la imagen */
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 0.9rem;
+  padding: 5px 0;
+}
