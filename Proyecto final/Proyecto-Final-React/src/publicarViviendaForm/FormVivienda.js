@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import './FormVivienda.css'; // Asegúrate de ajustar el nombre del archivo CSS
 import { useNavigate } from 'react-router-dom';
 
-function FormVivienda(props) {
+function FormVivienda() {
   const [objVivienda, setObjVivienda] = useState({});
   const navigate = useNavigate();
 

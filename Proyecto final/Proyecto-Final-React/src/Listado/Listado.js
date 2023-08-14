@@ -8,7 +8,7 @@ const Listado = () => {
   const [viviendas, setViviendas] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/Vivienda").then((res) => {
+    axios.get("http://localhost:5000/Vivienda/1").then((res) => {
       setViviendas(res.data);
     });
   }, []);

@@ -15,6 +15,7 @@ class ViviendaServices {
         }
         return returnEntity;
     }
+
     static getById = async (id) => {
         {
             let returnEntity = null;
@@ -25,6 +26,24 @@ class ViviendaServices {
                     .input('pId', sql.Int, id)
                     .query('SELECT * FROM Vivienda WHERE id = @pId');
                 returnEntity = result.recordsets[0][0];
+            } catch (error) {
+                console.log(error);
+            }
+            return returnEntity;
+
+        }
+    }
+
+    static getByIdUsuario = async (IdUsuario) => {
+        {
+            let returnEntity = null;
+            //console.log(`Estoy en: ViviendaServices.GetByIdUsuario ${id}`);
+            try {
+                let pool = await sql.connect(config);
+                let result = await pool.request()
+                    .input('pIdUsuario', sql.Int, IdUsuario)
+                    .query('SELECT * FROM Vivienda WHERE IdUsuario = @pIdUsuario');
+                returnEntity = result.recordsets[0];
             } catch (error) {
                 console.log(error);
             }

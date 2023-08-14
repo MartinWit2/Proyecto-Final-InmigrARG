@@ -1,6 +1,7 @@
 import express from "express";
 import Vivienda from "./models/Vivienda.js";
 import ViviendaServices from "./services/ViviendaServices.js";
+import UsuarioServices from "./services/UsuarioServices.js"
 import cors from "cors";
 
 const app = express();
@@ -22,9 +23,16 @@ app.get("/Vivienda", async (req, res) => {
 });
 
 // GET BY ID
+/*
 app.get("/Vivienda/:id", async (req, res) => {
   console.log(req.params.id);
   let vivienda = await ViviendaServices.getById(req.params.id);
+  res.status(200).send(vivienda);
+});
+*/
+app.get("/Vivienda/:id", async (req, res) => {
+  console.log(req.params.id);
+  let vivienda = await ViviendaServices.getByIdUsuario(req.params.id);
   res.status(200).send(vivienda);
 });
 
@@ -64,6 +72,16 @@ app.delete("/Vivienda/:id", async (req, res) => {
     res.status(500).json({ error: "Fallo el Delete" });
   }
 });
+
+//Usuarioooooo
+
+app.get("/Usuario/:Mail", async (req, res) => {
+  console.log(req.params.Mail);
+  let Usuario = await UsuarioServices.getById(req.params.Mail);
+  res.status(200).send(Usuario);
+});
+
+
 
 app.listen(port, () => {
   console.log(`Escuchando puerto ${port}`);
