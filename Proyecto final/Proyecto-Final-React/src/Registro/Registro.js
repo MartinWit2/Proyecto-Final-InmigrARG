@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import './Login.css';
+import './Registro.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -52,7 +52,7 @@ function Login() {
       <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh', marginTop:'-85px' }}>
         <Col xs={12} md={6} lg={4}>
           <div className="login-form">
-            <h2 className="text-center mb-4">Iniciar Sesión</h2>
+            <h2 className="text-center mb-4">Registrate</h2>
             <Form>
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>

@@ -9,8 +9,16 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Layout.css";
+import { useNavigate } from 'react-router-dom';
 
 function Layout() {
+  const navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+        navigate('/Login');
+    
+  };
   return (
     <>
       <Navbar expand="lg" className="navBar1">
@@ -25,20 +33,13 @@ function Layout() {
               <Nav.Link as={Link} to="/Viviendas">Viviendas</Nav.Link>
               <Nav.Link as={Link} to="/Form">Form</Nav.Link>
               <NavDropdown title="Usuario" id="NavBarDown"> 
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Ajustes </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Cerrar Sesión</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="warning">Search</Button>
-            </Form>
+              <Button variant="warning" onClick={handleLogin}>Iniciar Sesión</Button>
+           
           </Navbar.Collapse>
         </Container>
       </Navbar>
