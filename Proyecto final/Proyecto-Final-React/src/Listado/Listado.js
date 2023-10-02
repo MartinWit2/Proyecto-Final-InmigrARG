@@ -18,7 +18,6 @@ const Listado = () => {
       {viviendas.map((viv, index) => {
         const imagen = viv.imagen;
         const direccion = viv.Direccion;
-        const desc = viv.Descripcion;
         const m2 = viv.MetrosCuadradosTotales;
         const cocheras = viv.Cocheras;
         const ambientes = viv.Ambientes;
@@ -34,7 +33,7 @@ const Listado = () => {
             <Card.Img variant="top" src={imagen} className="card-img" />
             <div className="card-content">
               <Card.Title className="card-title">{direccion}</Card.Title>
-              <Card.Text className="card-text">{desc}</Card.Text>
+              <Card.Text className="card-text">{descripcion}</Card.Text>
               <ListGroup className="list-group-flush">
                 <ListGroup.Item>Dirección: {direccion}</ListGroup.Item>
                 <ListGroup.Item>Barrio: {barrio}</ListGroup.Item>
@@ -49,7 +48,6 @@ const Listado = () => {
                 <ListGroup.Item>Baños: {baños}</ListGroup.Item>
                 <ListGroup.Item>Cocheras: {cocheras}</ListGroup.Item>
                 <ListGroup.Item>Ambientes: {ambientes}</ListGroup.Item>
-                <ListGroup.Item>Descripcion: {descripcion}</ListGroup.Item>
                 <ListGroup.Item>Imagen: {imagen}</ListGroup.Item>
               </ListGroup>
             </div>

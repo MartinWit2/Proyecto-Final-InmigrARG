@@ -1,0 +1,25 @@
+/* IntroPage.css */
+
+.intro-page {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .left-side {
+    flex: 0 0 45%;
+    background-image: url('../HotelPlaya.jpg'); /* Reemplaza 'tu_imagen.jpg' con la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .right-side {
+    flex: 1;
+    padding: 20px;
+    background-color: #f0f0f0; /* Puedes cambiar el color de fondo a tu elección */
+  }
+  
+  .intro-text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  

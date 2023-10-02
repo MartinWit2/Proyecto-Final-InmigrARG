@@ -1,44 +1,50 @@
 /* Listado.css */
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres tarjetas por columna */
+  display: flex;
+  flex-direction: column;
   gap: 15px; /* Espacio entre tarjetas */
-  padding: 40px 350px; /* Espacio arriba y abajo, espacio a los costados */ 
+  padding: 40px; /* Espacio arriba y abajo, espacio a los costados */
 }
 
 .card {
   display: flex;
-  flex-direction: column;
   background-color: #48e3ee;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 50px;
   overflow: hidden;
-  max-width: 300px; /* Ancho máximo para las tarjetas */
+  margin-bottom: 15px; /* Espacio entre tarjetas verticales */
 }
 
 .card-img {
-  flex: 1;
+  flex: 1; /* La imagen ocupa la parte izquierda de la tarjeta */
   height: 150px; /* Altura de la imagen */
   object-fit: cover;
   border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px; /* También aplicamos border-radius en la parte inferior izquierda */
 }
 
 .card-content {
+  flex: 2; /* El contenido ocupa la parte derecha de la tarjeta */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
 .card-title {
   font-size: 1.2rem;
+  font-weight: bold; /* Hacemos que la dirección sea negrita */
   margin-bottom: 10px;
 }
 
-.card-text {
-  color: #666;
+.card-description {
+  color: #666; /* Cambiamos el color de la descripción a un tono más claro */
   margin-bottom: 10px;
+}
+
+.data-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .list-group-item {
