@@ -1,11 +1,23 @@
-.FormVivienda {
+.FormViviendaContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta la altura según tus necesidades */
+  background-color: #f0f0f0; /* Color claro de fondo */
+}
+
+.FormViviendaBox {
+  background-color: white; /* Color de fondo para la caja del formulario */
+  width: 90%; /* Ancho del 90% de la pantalla */
   max-width: 500px;
-  margin: 0 auto;
+  height: 90vh; /* Alto del 90% de la pantalla */
+  margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .FormVivienda label {
   font-weight: bold;

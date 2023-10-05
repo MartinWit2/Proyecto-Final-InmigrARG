@@ -33,9 +33,9 @@ function Layout() {
               <Nav.Link as={Link} to="/Viviendas">Viviendas</Nav.Link>
               <Nav.Link as={Link} to="/Form">Form</Nav.Link>
               <NavDropdown title="Usuario" id="NavBarDown"> 
-                <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
+                <NavDropdown.Item href="/Perfil">Perfil</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Ajustes </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Cerrar Sesión</NavDropdown.Item>
+                <NavDropdown.Item href="/Login">Cerrar Sesión</NavDropdown.Item>
               </NavDropdown>
             </Nav>
               <Button variant="warning" onClick={handleLogin}>Iniciar Sesión</Button>

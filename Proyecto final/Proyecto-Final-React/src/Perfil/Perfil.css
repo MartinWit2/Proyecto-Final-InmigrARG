@@ -1,0 +1,36 @@
+/* UserProfile.css */
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido en la parte superior */
+    height: 100vh;
+    text-align: center;
+  }
+  
+  /* Estilos para el título */
+  h1 {
+    font-size: 36px; /* Aumenta el tamaño del título */
+    margin-top: 20px; /* Mueve el título hacia arriba */
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

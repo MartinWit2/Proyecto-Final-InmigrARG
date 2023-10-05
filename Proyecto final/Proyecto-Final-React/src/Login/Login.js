@@ -48,33 +48,39 @@ function Login() {
   };
 
   return (
-    <Container className="login-container">
-      <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh', marginTop:'-85px' }}>
-        <Col xs={12} md={6} lg={4}>
-          <div className="login-form">
-            <h2 className="text-center mb-4">Iniciar Sesión</h2>
-            <Form>
-              <Form.Group controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={email} onChange={handleEmailChange} />
-              </Form.Group>
+    <div className="login-container">
+      <div className="login-form">
+        <h2 className="login-heading">Iniciar Sesión</h2>
+        <Form>
+          <Form.Group controlId="email">
+            <Form.Control
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={handleEmailChange}
+              className="login-input"
+            />
+          </Form.Group>
 
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" value={password} onChange={handlePasswordChange} />
-              </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Control
+              type="password"
+              placeholder="Contraseña"
+              value={password}
+              onChange={handlePasswordChange}
+              className="login-input"
+            />
+          </Form.Group>
 
-              <Button variant="primary" block onClick={handleLogin}>
-                Iniciar Sesión
-              </Button>
-              <Button variant="primary" block onClick={HandleRegister}>
-                Registrarse
-              </Button>
-            </Form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          <Button variant="primary" block onClick={handleLogin} className="login-button">
+            Iniciar Sesión
+          </Button>
+          <Button variant="secondary" block onClick={HandleRegister} className="register-button">
+            Registrarse
+          </Button>
+        </Form>
+      </div>
+    </div>
   );
 }
 

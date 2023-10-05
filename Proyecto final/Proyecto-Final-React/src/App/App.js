@@ -8,6 +8,7 @@ import Layout from '../Nav/Layout';
 import Home from '../Home/Home'
 import logo from '../logo.svg';
 import './App.css';
+import Perfil from '../Perfil/Perfil';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Home" element={<Home />} />
+          <Route path="/Perfil" element={<Perfil />} />
         </Routes>
       </BrowserRouter>
     </div>
