@@ -75,9 +75,9 @@ app.delete("/Vivienda/:id", async (req, res) => {
 
 //Usuarioooooo
 
-app.get("/Usuario/:Mail", async (req, res) => {
-  console.log(req.params.Mail);
-  let Usuario = await UsuarioServices.getById(req.params.Mail);
+app.get("/Usuario/", async (req, res) => {
+  console.log("llega al back",req.body.Mail);
+  let Usuario = await UsuarioServices.getById(req.body.Mail);
   res.status(200).send(Usuario);
 });
 

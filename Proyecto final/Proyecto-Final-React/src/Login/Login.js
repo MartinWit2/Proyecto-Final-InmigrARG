@@ -25,8 +25,9 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/Usuario/${email}`, {
+      const response = await axios.get(`http://localhost:5000/Usuario`, {
         params: {
+          Mail: email,
           password: password
         }
       });
