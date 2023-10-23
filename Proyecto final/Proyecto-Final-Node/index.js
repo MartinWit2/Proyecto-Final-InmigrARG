@@ -75,10 +75,16 @@ app.delete("/Vivienda/:id", async (req, res) => {
 
 //Usuarioooooo
 
-app.get("/Usuario/", async (req, res) => {
-  console.log("llega al back",req.body.Mail);
+app.post("/Usuario/", async (req, res) => {
+  let data = req.body;
+  console.log("llega al back:"+ JSON.stringify(data))
+  //console.log("llega al back",req.body.Mail);
+  
   let Usuario = await UsuarioServices.getById(req.body.Mail);
-  res.status(200).send(Usuario);
+  if (Usuario)
+    res.status(200).send(Usuario);
+  
+  res.status(404).send()
 });
 
 

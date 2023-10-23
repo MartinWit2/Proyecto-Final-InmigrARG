@@ -18,6 +18,7 @@ class UsuarioServices{
             } catch (error) {
                 console.log(error);
             }
+            console.log("encontro mail", JSON.stringify(returnEntity))
             return returnEntity;
 
         }

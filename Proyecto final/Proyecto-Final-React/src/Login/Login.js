@@ -25,12 +25,13 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/Usuario`, {
-        params: {
-          Mail: email,
-          password: password
-        }
-      });
+      const requestOptions = {
+        method:'POST',
+        headers: {'Content-type': 'application/json'},
+        //body: JSON.stringify({Mail: email, password: password})
+        body:  {Mail: email, password: password}
+      }
+      const response = await axios.post('http://localhost:5000/Usuario',  {Mail: email, password: password});
   
       // Assuming the API responds with a token upon successful login
       const token = response.data.token;
@@ -44,6 +45,7 @@ function Login() {
       window.location.href = '/';
     } catch (error) {
       console.error('Error during login:', error);
+      alert("Usuario inexistente")
       // Handle authentication error here (e.g., show error message to the user)
     }
   };
