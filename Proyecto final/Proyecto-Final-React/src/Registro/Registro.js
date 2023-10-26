@@ -23,15 +23,30 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const HandleRegister = (event) => {
-    event.preventDefault();
-        navigate('/Registro');
-    
+  const handleNameChange = (event) => {
+    setNombre(event.target.value);
   };
+    const handleApellidoChange = (event) => {
+      setApellido(event.target.value);
+    };
 
-  const handleLogin = async () => {
+    const handleNumeroChange = (event) => {
+      setNumero(event.target.value);
+    };
+
+    const handlePaisChange = (event) => {
+      setPais(event.target.value);
+    };
+
+    const handleCiudadChange = (event) => {
+      setCiudad(event.target.value);
+    };
+
+ 
+
+  const HandleRegister = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/Usuario/${email}`, {
+      const response = await axios.post(`http://localhost:5000/Usuario/${email}`, {
         params: {
           password: password
         }
@@ -64,15 +79,15 @@ function Login() {
             <Form>
             <Form.Group controlId="nombre">
                 <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" value={nombre} onChange={handleEmailChange} />
+                <Form.Control type="text" value={nombre} onChange={handleNameChange} />
               </Form.Group>
               <Form.Group controlId="apellido">
                 <Form.Label>Apellido</Form.Label>
-                <Form.Control type="text" value={apellido} onChange={handleEmailChange} />
+                <Form.Control type="text" value={apellido} onChange={handleApellidoChange} />
               </Form.Group>
               <Form.Group controlId="numero">
                 <Form.Label>Numero</Form.Label>
-                <Form.Control type="text" value={numero} onChange={handleEmailChange} />
+                <Form.Control type="text" value={numero} onChange={handleNumeroChange} />
               </Form.Group>
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
@@ -85,11 +100,11 @@ function Login() {
               </Form.Group>
               <Form.Group controlId="pais">
                 <Form.Label>Pais</Form.Label>
-                <Form.Control type="text" value={pais} onChange={handleEmailChange} />
+                <Form.Control type="text" value={pais} onChange={handlePaisChange} />
               </Form.Group>
               <Form.Group controlId="ciudad">
                 <Form.Label>Ciudad</Form.Label>
-                <Form.Control type="text" value={ciudad} onChange={handleEmailChange} />
+                <Form.Control type="text" value={ciudad} onChange={handleCiudadChange} />
               </Form.Group>
               <Button variant="primary" block onClick={HandleRegister}>
                 Registrarse

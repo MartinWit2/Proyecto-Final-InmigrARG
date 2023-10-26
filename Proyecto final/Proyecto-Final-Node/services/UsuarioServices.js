@@ -24,5 +24,35 @@ class UsuarioServices{
         }
     }
 
+    static create = async (nombre, apellido, email, contraseña, numero, pais, ciudad) => {
+        let success = false;
+    
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('Nombre', sql.NVarChar, nombre)
+                .input('Apellido', sql.NVarChar, apellido)
+                .input('Email', sql.NVarChar, email)
+                .input('Contraseña', sql.NVarChar, contraseña)
+                .input('Numero', sql.NVarChar, numero)
+                .input('Nacionalidad', sql.NVarChar, pais)
+                .input('Ciudad', sql.NVarChar, ciudad)
+                .input('TipoUsuario',"Inmobilaria")
+                .query('INSERT INTO Usuarios (Nombre, Apellido, Email, Contraseña, Numero, Nacionalidad, Ciudad,TipoUsuario) VALUES (@Nombre, @Apellido, @Email, @Contraseña, @Numero, @Nacionalidad, @Ciudad,"Inmobilaria")');
+    
+            if (result.rowsAffected[0] === 1) {
+                success = true;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    
+        return success;
+    }
+    
+
+
+
+
 }
 export default UsuarioServices;
