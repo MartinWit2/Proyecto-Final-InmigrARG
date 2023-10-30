@@ -66,18 +66,17 @@ function Login() {
       console.error('Error during login:', error);
       // Handle authentication error here (e.g., show error message to the user)
     }
+
   };
 
   return (
-    
     <Container className="login-container">
-      
-      <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh', marginTop:'-85px' }}>
-        <Col xs={12} md={6} lg={4}>
+      <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh', marginTop: '-85px' }}>
+        <Col xs={3000} md={3000} lg={3000}>
           <div className="login-form">
-            <h2 className="text-center mb-4">Registrate</h2>
+            <h2 className="text-center mb-4">Regístrate</h2>
             <Form>
-            <Form.Group controlId="nombre">
+              <Form.Group controlId="nombre">
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control type="text" value={nombre} onChange={handleNameChange} />
               </Form.Group>
@@ -86,20 +85,19 @@ function Login() {
                 <Form.Control type="text" value={apellido} onChange={handleApellidoChange} />
               </Form.Group>
               <Form.Group controlId="numero">
-                <Form.Label>Numero</Form.Label>
+                <Form.Label>Número</Form.Label>
                 <Form.Control type="text" value={numero} onChange={handleNumeroChange} />
               </Form.Group>
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleEmailChange} />
               </Form.Group>
-
               <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={password} onChange={handlePasswordChange} />
               </Form.Group>
               <Form.Group controlId="pais">
-                <Form.Label>Pais</Form.Label>
+                <Form.Label>País</Form.Label>
                 <Form.Control type="text" value={pais} onChange={handlePaisChange} />
               </Form.Group>
               <Form.Group controlId="ciudad">
@@ -113,10 +111,23 @@ function Login() {
           </div>
         </Col>
       </Row>
-      
     </Container>
-    
   );
 }
 
+
+
+
 export default Login;
+
+/*const { setUserData } = useUser();
+  
+const HandleRegister = async () => {
+setUserData({
+  nombre: nombre,
+  apellido: apellido,
+  pais: pais,
+  ciudad: ciudad,
+  email: email,
+  telefono: telefono,
+});*/

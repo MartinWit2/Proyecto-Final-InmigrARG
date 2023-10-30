@@ -1,3 +1,48 @@
-.contenedor {
+/*.contenedor {
     background-color: #37BADE;
   }
+  /* Registro.css */
+
+.login-container {
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 40px;
+}
+
+.login-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Adjust the styles as needed to match your design preferences */

@@ -9,7 +9,8 @@ function Perfil (){
 
     const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
-  const [dni, setDni] = useState('');
+  const [pais, setPais] = useState('');
+  const [ciudad, setCiudad] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
 
@@ -35,12 +36,20 @@ function Perfil (){
         onChange={(e) => setApellido(e.target.value)}
       />
 
-      <label htmlFor="dni">DNI:</label>
+      <label htmlFor="dni">Pais:</label>
       <input
         type="text"
         id="dni"
-        value={dni}
-        onChange={(e) => setDni(e.target.value)}
+        value={pais}
+        onChange={(e) => setPais(e.target.value)}
+      />
+
+      <label htmlFor="dni">Ciudad:</label>
+      <input
+        type="text"
+        id="dni"
+        value={ciudad}
+        onChange={(e) => setCiudad(e.target.value)}
       />
 
       {/* Contacto */}
