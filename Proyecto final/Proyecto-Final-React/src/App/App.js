@@ -11,6 +11,7 @@ import './App.css';
 import Perfil from '../Perfil/Perfil';
 
 function App() {
+
   return (
     <div className="fondo">
       <BrowserRouter>

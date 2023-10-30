@@ -4,6 +4,8 @@ import './Registro.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./Registro.css"; 
+import { useUser } from '../User/UserContext';
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -14,6 +16,7 @@ function Login() {
   const [pais, setPais] = useState('');
   const [ciudad, setCiudad] = useState('');
   const navigate = useNavigate();
+  const { setUserData } = useUser();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -48,9 +51,25 @@ function Login() {
     try {
       const response = await axios.post(`http://localhost:5000/Usuario/${email}`, {
         params: {
+          nombre: nombre, 
+          apellido: apellido, 
+          email: email, 
+          numero: numero, 
+          pais: pais, 
+          ciudad: ciudad,
           password: password
         }
       });
+      
+      setUserData({
+        nombre: nombre,
+        apellido: apellido,
+        pais: pais,
+        ciudad: ciudad,
+        email: email,
+        numero: numero,
+      });
+      
   
       // Assuming the API responds with a token upon successful login
       const token = response.data.token;

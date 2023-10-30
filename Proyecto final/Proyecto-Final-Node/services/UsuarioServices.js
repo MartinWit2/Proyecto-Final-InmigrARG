@@ -26,19 +26,20 @@ class UsuarioServices{
 
     static create = async (nombre, apellido, email, contraseña, numero, pais, ciudad) => {
         let success = false;
-    
+        console.log("llega al create");
+
+        console.log("Nombre: ", nombre);
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('Nombre', sql.NVarChar, nombre)
                 .input('Apellido', sql.NVarChar, apellido)
-                .input('Email', sql.NVarChar, email)
+                .input('Mail', sql.NVarChar, email)
                 .input('Contraseña', sql.NVarChar, contraseña)
-                .input('Numero', sql.NVarChar, numero)
+                .input('Telefono', sql.NVarChar, numero)
                 .input('Nacionalidad', sql.NVarChar, pais)
                 .input('Ciudad', sql.NVarChar, ciudad)
-                .input('TipoUsuario',"Inmobilaria")
-                .query('INSERT INTO Usuarios (Nombre, Apellido, Email, Contraseña, Numero, Nacionalidad, Ciudad,TipoUsuario) VALUES (@Nombre, @Apellido, @Email, @Contraseña, @Numero, @Nacionalidad, @Ciudad,"Inmobilaria")');
+                .query('INSERT INTO Usuario (Nombre, Apellido, Mail, Contraseña, Telefono, Nacionalidad, Ciudad) VALUES (@Nombre, @Apellido, @Mail, @Contraseña, @Telefono, @Nacionalidad, @Ciudad)');
     
             if (result.rowsAffected[0] === 1) {
                 success = true;

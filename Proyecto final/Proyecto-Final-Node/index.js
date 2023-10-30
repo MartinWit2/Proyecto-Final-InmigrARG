@@ -75,16 +75,19 @@ app.delete("/Vivienda/:id", async (req, res) => {
 
 //Usuarioooooo
 
-app.post("/Usuario/", async (req, res) => {
+app.post("/Usuario/:email", async (req, res) => {
   let data = req.body;
   console.log("llega al back:"+ JSON.stringify(data))
   //console.log("llega al back",req.body.Mail);
   
-  let Usuario = await UsuarioServices.getById(req.body.Mail);
+  //let Usuario = await UsuarioServices.getById(req.body.Mail);
+  await UsuarioServices.create(req.body.params.nombre, req.body.params.apellido, req.body.params.email, req.body.params.password, req.body.params.numero, req.body.params.pais, req.body.params.ciudad);
+  /*
   if (Usuario)
     res.status(200).send(Usuario);
-  
-  res.status(404).send()
+  */
+    res.status(200).send();
+  /*res.status(404).send()*/
 });
 
 

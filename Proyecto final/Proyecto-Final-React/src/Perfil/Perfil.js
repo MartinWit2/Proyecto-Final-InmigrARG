@@ -4,15 +4,19 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Perfil.css'; 
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../User/UserContext';
+
 
 function Perfil (){
 
-    const [nombre, setNombre] = useState('');
+  const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [pais, setPais] = useState('');
   const [ciudad, setCiudad] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
+  const { userData } = useUser();
+
 
   return (
     <div className="container">
@@ -24,7 +28,7 @@ function Perfil (){
       <input
         type="text"
         id="nombre"
-        value={nombre}
+        value={userData.nombre}
         onChange={(e) => setNombre(e.target.value)}
       />
 
@@ -32,23 +36,23 @@ function Perfil (){
       <input
         type="text"
         id="apellido"
-        value={apellido}
+        value={userData.apellido}
         onChange={(e) => setApellido(e.target.value)}
       />
 
-      <label htmlFor="dni">Pais:</label>
+      <label htmlFor="pais">Pais:</label>
       <input
         type="text"
-        id="dni"
-        value={pais}
+        id="pais"
+        value={userData.pais}
         onChange={(e) => setPais(e.target.value)}
       />
 
-      <label htmlFor="dni">Ciudad:</label>
+      <label htmlFor="ciudad">Ciudad:</label>
       <input
         type="text"
-        id="dni"
-        value={ciudad}
+        id="ciudad"
+        value={userData.ciudad}
         onChange={(e) => setCiudad(e.target.value)}
       />
 
@@ -58,7 +62,7 @@ function Perfil (){
       <input
         type="email"
         id="email"
-        value={email}
+        value={userData.email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
@@ -66,7 +70,7 @@ function Perfil (){
       <input
         type="tel"
         id="telefono"
-        value={telefono}
+        value={userData.telefono}
         onChange={(e) => setTelefono(e.target.value)}
       />
     </div>
