@@ -9,6 +9,7 @@ const Listado = () => {
 
   useEffect(() => {
     axios.get("http://localhost:5000/Vivienda/1").then((res) => {
+      console.log(res.data);
       setViviendas(res.data);
     });
   }, []);

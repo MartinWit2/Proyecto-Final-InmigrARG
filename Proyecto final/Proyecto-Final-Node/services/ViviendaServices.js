@@ -37,7 +37,7 @@ class ViviendaServices {
     static getByIdUsuario = async (IdUsuario) => {
         {
             let returnEntity = null;
-            //console.log(`Estoy en: ViviendaServices.GetByIdUsuario ${id}`);
+            console.log(`Estoy en: ViviendaServices.GetByIdUsuario ${IdUsuario}`);
             try {
                 let pool = await sql.connect(config);
                 let result = await pool.request()

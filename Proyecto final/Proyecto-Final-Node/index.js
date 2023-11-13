@@ -31,6 +31,7 @@ app.get("/Vivienda/:id", async (req, res) => {
 });
 */
 app.get("/Vivienda/:id", async (req, res) => {
+  console.log("entramos a viviendo/Id")
   console.log(req.params.id);
   let vivienda = await ViviendaServices.getByIdUsuario(req.params.id);
   res.status(200).send(vivienda);

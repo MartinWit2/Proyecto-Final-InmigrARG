@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function FormVivienda() {
   const [objVivienda, setObjVivienda] = useState({});
   const navigate = useNavigate();
+  const [image, setImage] = useState(null); 
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -18,17 +19,31 @@ function FormVivienda() {
     console.log(objVivienda);
   };
 
-  const agregarVivienda = (objVivienda) => {
+  const agregarVivienda = async (objVivienda) => {
+    const formData = new FormData();
+    formData.append('image', image); // Agregamos la imagen al formData
+    formData.append('data', JSON.stringify(objVivienda));
+  
     let url = 'http://localhost:5000/Vivienda';
-    return axios.post(url, objVivienda);
+    return axios.post(url, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     agregarVivienda(objVivienda).then(() => {
       navigate('/Viviendas');
     });
   };
+
+
+
+const handleImageChange = (event) => {
+  const file = event.target.files[0];
+  setImage(file);
+};
 
   return (
     <div className="FormViviendaContainer">
@@ -145,7 +160,7 @@ function FormVivienda() {
               type="file"
               name="Imagen"
               accept="image/*"
-              onChange={handleInputChange}
+              onChange={handleImageChange}
             />
           </Form.Group>
 
