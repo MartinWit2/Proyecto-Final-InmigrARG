@@ -7,6 +7,7 @@ import "./Registro.css";
 import { useUser } from '../User/UserContext';
 
 
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ function Login() {
   const [pais, setPais] = useState('');
   const [ciudad, setCiudad] = useState('');
   const navigate = useNavigate();
-  const { setUserData } = useUser();
+  const UserData = useUser();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -61,14 +62,16 @@ function Login() {
         }
       });
       
-      setUserData({
-        nombre: nombre,
-        apellido: apellido,
-        pais: pais,
-        ciudad: ciudad,
-        email: email,
-        numero: numero,
-      });
+      if (UserData) {
+        UserData.setUserData({
+          nombre: nombre,
+          apellido: apellido,
+          pais: pais,
+          ciudad: ciudad,
+          email: email,
+          numero: numero,
+        });
+      }
       
   
       // Assuming the API responds with a token upon successful login
@@ -80,7 +83,7 @@ function Login() {
       // Redirect to another page after successful login
       // You can replace '/' with the desired route
       // or use react-router navigation methods
-      window.location.href = '/';
+      window.location.href = '/Home';
     } catch (error) {
       console.error('Error during login:', error);
       // Handle authentication error here (e.g., show error message to the user)
@@ -138,6 +141,7 @@ function Login() {
 
 
 export default Login;
+
 
 /*const { setUserData } = useUser();
   
