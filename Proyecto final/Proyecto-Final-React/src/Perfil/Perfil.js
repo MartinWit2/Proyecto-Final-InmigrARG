@@ -1,79 +1,80 @@
-import React, { useState } from 'react';
-import axios from "axios";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import './Perfil.css'; 
-import { useNavigate } from 'react-router-dom';
+// Perfil.js
+import React, { useState, useEffect } from 'react';
 import { useUser } from '../User/UserContext';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
+function Perfil() {
+  const { userData, setUserData } = useUser();
 
-function Perfil (){
-
+  // Estados locales para manejar la edición de datos
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
-  const [pais, setPais] = useState('');
+  const [nacionalidad, setNacionalidad] = useState('');
   const [ciudad, setCiudad] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
-  const { userData } = useUser();
 
+  // Función para cargar los datos del usuario desde la base de datos
+  const cargarDatosUsuario = async () => {
+    try {
+      // Realizar una solicitud POST al servidor para obtener los datos del usuario
+      const response = await axios.post('http://localhost:5000/Usuario', { email: userData.email });
+      console.log(response);
+  
+      // Actualizar el estado local con los datos del usuario
+      const usuario = response.data; // Asegúrate de que el servidor devuelve los datos correctamente
+      setNombre(usuario.nombre);
+      setApellido(usuario.apellido);
+      setNacionalidad(usuario.nacionalidad);
+      setCiudad(usuario.ciudad);
+      setEmail(usuario.email);
+      setTelefono(usuario.telefono);
+    } catch (error) {
+      console.error('Error al cargar datos del usuario:', error);
+    }
+  };
+
+  // Efecto para cargar los datos del usuario al montar el componente
+  useEffect(() => {
+    cargarDatosUsuario();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="container">
       <h1>Perfil de Usuario</h1>
 
-      {/* Datos Personales */}
-      <h2>Datos Personales</h2>
-      <label htmlFor="nombre">Nombre:</label>
-      <input
-        type="text"
-        id="nombre"
-        value={userData.nombre}
-        onChange={(e) => setNombre(e.target.value)}
-      />
+      <div>
+        <strong>Nombre:</strong> {nombre}
+      </div>
 
-      <label htmlFor="apellido">Apellido:</label>
-      <input
-        type="text"
-        id="apellido"
-        value={userData.apellido}
-        onChange={(e) => setApellido(e.target.value)}
-      />
+      <div>
+        <strong>Apellido:</strong> {apellido}
+      </div>
 
-      <label htmlFor="pais">Pais:</label>
-      <input
-        type="text"
-        id="pais"
-        value={userData.pais}
-        onChange={(e) => setPais(e.target.value)}
-      />
+      <div>
+        <strong>País:</strong> {nacionalidad}
+      </div>
 
-      <label htmlFor="ciudad">Ciudad:</label>
-      <input
-        type="text"
-        id="ciudad"
-        value={userData.ciudad}
-        onChange={(e) => setCiudad(e.target.value)}
-      />
+      <div>
+        <strong>Ciudad:</strong> {ciudad}
+      </div>
 
-      {/* Contacto */}
-      <h2>Contacto</h2>
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        value={userData.email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div>
+        <strong>Email:</strong> {email}
+      </div>
 
-      <label htmlFor="telefono">Teléfono:</label>
-      <input
-        type="tel"
-        id="telefono"
-        value={userData.telefono}
-        onChange={(e) => setTelefono(e.target.value)}
-      />
+      <div>
+        <strong>Teléfono:</strong> {telefono}
+      </div>
+
+      <Button variant="primary" onClick={() => cargarDatosUsuario()}>
+        Recargar Datos
+      </Button>
     </div>
   );
 }
+
 export default Perfil;
+

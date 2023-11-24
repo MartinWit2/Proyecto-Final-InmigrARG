@@ -25,13 +25,14 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const requestOptions = {
-        method:'POST',
-        headers: {'Content-type': 'application/json'},
-        //body: JSON.stringify({Mail: email, password: password})
-        body:  {Mail: email, password: password}
-      }
-      const response = await axios.post('http://localhost:5000/Usuario',  {Mail: email, password: password});
+      const url = 'http://localhost:5000/Usuario/' + email
+      // const requestOptions = {
+      //   method:'get',
+      //   headers: {'Content-type': 'application/json'},
+      //   //body: JSON.stringify({Mail: email, password: password})
+      //   body:  {Mail: email, password: password}
+      // }
+      const response = await axios.get(url);
   
       // Assuming the API responds with a token upon successful login
       const token = response.data.token;

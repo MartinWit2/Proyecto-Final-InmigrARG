@@ -9,22 +9,25 @@ import Home from '../Home/Home'
 import logo from '../logo.svg';
 import './App.css';
 import Perfil from '../Perfil/Perfil';
+import { UserProvider } from '../User/UserContext';
 
 function App() {
 
   return (
     <div className="fondo">
-      <BrowserRouter>
-        <Layout></Layout>
-        <Routes>
-          <Route path="/Viviendas" element={<Listado />} />
-          <Route path="/Form" element={<FormVivienda />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Registro" element={<Registro />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Perfil" element={<Perfil />} />
-        </Routes>
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <Layout></Layout>
+          <Routes>
+            <Route path="/Viviendas" element={<Listado />} />
+            <Route path="/Form" element={<FormVivienda />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/Registro" element={<Registro />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/Perfil" element={<Perfil />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </div>
   );
 }
