@@ -19,7 +19,7 @@ function Perfil() {
   const cargarDatosUsuario = async () => {
     try {
       // Realizar una solicitud POST al servidor para obtener los datos del usuario
-      const response = await axios.post('http://localhost:5000/Usuario', { email: userData.email });
+      const response = await axios.get('http://localhost:5000/Usuario/'+ { email: userData.email });
       console.log(response);
   
       // Actualizar el estado local con los datos del usuario

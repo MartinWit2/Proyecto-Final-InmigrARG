@@ -5,7 +5,7 @@ class UsuarioServices{
 
 
 
-    static getById = async (Mail) => {
+    static getById = async (Mail, Contraseña) => {
         {
             let returnEntity = null;
             //console.log(`Estoy en: UsuarioServices.GetById ${id}`);

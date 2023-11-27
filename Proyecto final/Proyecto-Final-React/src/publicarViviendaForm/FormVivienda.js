@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function FormVivienda() {
   const [objVivienda, setObjVivienda] = useState({});
   const navigate = useNavigate();
-  const [image, setImage] = useState(null); 
+ // const [image, setImage] = useState(null); 
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -16,20 +16,13 @@ function FormVivienda() {
       ...prevObj,
       [name]: value,
     }));
-    console.log(objVivienda);
+
   };
 
   const agregarVivienda = async (objVivienda) => {
-    const formData = new FormData();
-    formData.append('image', image); // Agregamos la imagen al formData
-    formData.append('data', JSON.stringify(objVivienda));
   
-    let url = 'http://localhost:5000/Vivienda';
-    return axios.post(url, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    let url = 'http://localhost:5000/Vivienda/';
+    return axios.post(url,objVivienda);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -40,15 +33,15 @@ function FormVivienda() {
 
 
 
-const handleImageChange = (event) => {
-  const file = event.target.files[0];
-  setImage(file);
-};
+//const handleImageChange = (event) => {
+ // const file = event.target.files[0];
+  //setImage(file);
+
 
   return (
     <div className="FormViviendaContainer">
       <div className="FormViviendaBox">
-        <Form onSubmit={handleSubmit} className="FormVivienda">
+        <Form onSubmit={handleSubmit} className="FormVivienda" encType="multipart/form-data">
           <Form.Group controlId="input1">
             <Form.Label>Dirección: </Form.Label>
             <Form.Control
@@ -154,21 +147,12 @@ const handleImageChange = (event) => {
             />
           </Form.Group>
 
-          <Form.Group controlId="imageInput">
-            <Form.Label>Subir Imagen (Opcional):</Form.Label>
-            <Form.Control
-              type="file"
-              name="Imagen"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-          </Form.Group>
 
           <Button type="submit">Enviar</Button>
         </Form>
       </div>
     </div>
   );
-}
+  }
 
 export default FormVivienda;

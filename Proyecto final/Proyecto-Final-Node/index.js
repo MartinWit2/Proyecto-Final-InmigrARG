@@ -97,14 +97,15 @@ app.get("/Usuario/:email", async (req, res) => {
   //console.log("llega al back",req.body.Mail);
   
   //let Usuario = await UsuarioServices.getById(req.body.Mail);
-  await UsuarioServices.getById(req.params.email);
+   let respuesta = await UsuarioServices.getById(req.params.email);
   /*
   if (Usuario)
     res.status(200).send(Usuario);
   */
-    res.status(200).send();
+    res.status(200).send(respuesta);
   /*res.status(404).send()*/
 });
+
 
 
 

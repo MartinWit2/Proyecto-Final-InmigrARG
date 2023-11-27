@@ -71,8 +71,7 @@ class ViviendaServices {
                     .input('pCocheras',Vivienda.Cocheras)
                     .input('pAmbientes',Vivienda.Ambientes)
                     .input('pDescripcion',Vivienda.Descripcion)
-                    .input('pImagen',Vivienda.Imagen)
-                    .query('INSERT INTO Vivienda (IdUsuario,Direccion, Barrio, TipoVivienda , MetrosCuadradosTotales, MetrosCuadradosCubierta, Luminosidad, Baños, Cocheras, Ambientes, Descripcion, Imagen) VALUES (@pIdUsuario,@pDireccion, @pBarrio, @pTipoVivienda, @pMetrosCuadradosTotales, @pMetrosCuadradosCubierta, @pLuminosidad, @pBaños, @pCocheras, @pAmbientes, @pDescripcion, @pImagen)');
+                    .query('INSERT INTO Vivienda (IdUsuario,Direccion, Barrio, TipoVivienda , MetrosCuadradosTotales, MetrosCuadradosCubierta, Luminosidad, Baños, Cocheras, Ambientes, Descripcion) VALUES (@pIdUsuario,@pDireccion, @pBarrio, @pTipoVivienda, @pMetrosCuadradosTotales, @pMetrosCuadradosCubierta, @pLuminosidad, @pBaños, @pCocheras, @pAmbientes, @pDescripcion)');
                 rowsAffected = result.rowsAffected;
                 console.log("query");
                 console.log(rowsAffected);

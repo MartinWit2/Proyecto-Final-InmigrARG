@@ -33,7 +33,7 @@ function Layout() {
               <Nav.Link as={Link} to="/Viviendas">Viviendas</Nav.Link>
               <Nav.Link as={Link} to="/Form">Publicar Vivienda</Nav.Link>
               <NavDropdown title="Usuario" id="NavBarDown"> 
-                <NavDropdown.Item href="/Perfil">Perfil</NavDropdown.Item>
+                
                 <NavDropdown.Item href="/Login">Cerrar Sesión</NavDropdown.Item>
               </NavDropdown>
             </Nav>

@@ -23,33 +23,38 @@ function Login() {
     
   };
 
-  const handleLogin = async () => {
-    try {
-      const url = 'http://localhost:5000/Usuario/' + email
-      // const requestOptions = {
-      //   method:'get',
-      //   headers: {'Content-type': 'application/json'},
-      //   //body: JSON.stringify({Mail: email, password: password})
-      //   body:  {Mail: email, password: password}
-      // }
-      const response = await axios.get(url);
-  
-      // Assuming the API responds with a token upon successful login
-      const token = response.data.token;
-  
-      // Store the token in local storage or state for future requests
-      localStorage.setItem('token', token);
-  
-      // Redirect to another page after successful login
-      // You can replace '/' with the desired route
-      // or use react-router navigation methods
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Error during login:', error);
+// ... (código anterior)
+
+const handleLogin = async () => {
+  try {
+    const url = 'http://localhost:5000/Usuario/' + email
+    // const requestOptions = {
+    //   method:'get',
+    //   headers: {'Content-type': 'application/json'},
+    //   //body: JSON.stringify({Mail: email, password: password})
+    //   body:  {Mail: email, password: password}
+    // }
+    const response = await axios.get(url);
+    console.log("recibi: " + JSON.stringify(response.data));
+    const token = response.data.token;
+
+    localStorage.setItem('token', token);
+    if (response.data === "") {
       alert("Usuario inexistente")
-      // Handle authentication error here (e.g., show error message to the user)
     }
-  };
+    else{
+      navigate('/Home');
+    }
+
+    
+  } catch (error) {
+    console.error('Error during login:', error);
+    alert("Usuario inexistente")
+  }
+};
+
+// ... (código posterior)
+
 
   return (
     <div className="login-container">

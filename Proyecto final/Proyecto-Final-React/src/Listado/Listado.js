@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Listado = () => {
   const [viviendas, setViviendas] = useState([]);
+  
 
   useEffect(() => {
     axios.get("http://localhost:5000/Vivienda/1").then((res) => {
@@ -17,7 +18,7 @@ const Listado = () => {
   return (
     <div className="card-container">
       {viviendas.map((viv, index) => {
-        const imagen = viv.imagen;
+       // const imagen = viv.imagen;
         const direccion = viv.Direccion;
         const m2 = viv.MetrosCuadradosTotales;
         const cocheras = viv.Cocheras;
@@ -31,7 +32,7 @@ const Listado = () => {
 
         return (
           <Card key={index} className="card">
-            <Card.Img variant="top" src={imagen} className="card-img" />
+
             <div className="card-content">
               <Card.Title className="card-title">{direccion}</Card.Title>
               <Card.Text className="card-text">{descripcion}</Card.Text>
@@ -49,7 +50,8 @@ const Listado = () => {
                 <ListGroup.Item>Baños: {baños}</ListGroup.Item>
                 <ListGroup.Item>Cocheras: {cocheras}</ListGroup.Item>
                 <ListGroup.Item>Ambientes: {ambientes}</ListGroup.Item>
-                <ListGroup.Item>Imagen: {imagen}</ListGroup.Item>
+
+
               </ListGroup>
             </div>
           </Card>
