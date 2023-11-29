@@ -32,14 +32,14 @@ class UsuarioServices{
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('Nombre', sql.NVarChar, nombre)
-                .input('Apellido', sql.NVarChar, apellido)
-                .input('Mail', sql.NVarChar, email)
-                .input('Contraseña', sql.NVarChar, contraseña)
-                .input('Telefono', sql.NVarChar, numero)
-                .input('Nacionalidad', sql.NVarChar, pais)
-                .input('Ciudad', sql.NVarChar, ciudad)
-                .query('INSERT INTO Usuario (Nombre, Apellido, Mail, Contraseña, Telefono, Nacionalidad, Ciudad) VALUES (@Nombre, @Apellido, @Mail, @Contraseña, @Telefono, @Nacionalidad, @Ciudad)');
+                .input('Nombre', sql.VarChar, nombre)
+                .input('Apellido', sql.VarChar, apellido)
+                .input('Mail', sql.VarChar, email)
+                .input('Contraseña', sql.VarChar, contraseña)
+                .input('Telefono', sql.VarChar, numero)
+                .input('Nacionalidad', sql.VarChar, pais)
+                .input('Ciudad', sql.VarChar, ciudad)
+                .query('INSERT INTO Usuario (Nombre, Apellido,Telefono, Mail, Contraseña,Nacionalidad, Ciudad) VALUES (@Nombre, @Apellido,@Telefono,@Mail, @Contraseña,@Nacionalidad, @Ciudad)');
     
             if (result.rowsAffected[0] === 1) {
                 success = true;
