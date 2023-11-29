@@ -27,31 +27,31 @@ function Login() {
 
 const handleLogin = async () => {
   try {
-    const url = 'http://localhost:5000/Usuario/' + email
-    // const requestOptions = {
-    //   method:'get',
-    //   headers: {'Content-type': 'application/json'},
-    //   //body: JSON.stringify({Mail: email, password: password})
-    //   body:  {Mail: email, password: password}
-    // }
+    const url = 'http://localhost:5000/Usuario/' + email;
     const response = await axios.get(url);
-    console.log("recibi: " + JSON.stringify(response.data));
-    const token = response.data.token;
 
-    localStorage.setItem('token', token);
     if (response.data === "") {
-      alert("Usuario inexistente")
+      alert("Usuario inexistente");
+    } else {
+      localStorage.setItem('nombreUsuario', JSON.stringify(email));
+      navigate('/');
     }
-    else{
-      navigate('/Home');
-    }
-
-    
   } catch (error) {
-    console.error('Error during login:', error);
-    alert("Usuario inexistente")
+    if (axios.isAxiosError(error) && error.response) {
+      if (error.response.status === 404) {
+        alert("Usuario inexistente");
+      } else {
+        console.error('Error during login:', error);
+        alert('Error durante el inicio de sesión');
+      }
+    } else {
+      console.error('Error during login:', error);
+      alert('Error durante el inicio de sesión');
+    }
   }
 };
+
+
 
 // ... (código posterior)
 

@@ -10,14 +10,22 @@ import {
 import { Link } from "react-router-dom";
 import "./Layout.css";
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
 
 function Layout() {
+  const [inicioSesion, setInicioSesion] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('nombreUsuario'));
+    storedData ? setInicioSesion(storedData) : setInicioSesion(null)
+  }, []);
+
 
   const handleLogin = (event) => {
     event.preventDefault();
-        navigate('/Login');
-    
+    navigate('/Login');
+
   };
   return (
     <>
@@ -29,16 +37,21 @@ function Layout() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/Viviendas">Viviendas</Nav.Link>
               <Nav.Link as={Link} to="/Form">Publicar Vivienda</Nav.Link>
-              <NavDropdown title="Usuario" id="NavBarDown"> 
-                
-                <NavDropdown.Item href="/Login">Cerrar Sesión</NavDropdown.Item>
+              <NavDropdown title="Usuario" id="NavBarDown">
+                <NavDropdown.Item href="/Login" onClick={()=>{localStorage.setItem('nombreUsuario', JSON.stringify( null));}}>Cerrar Sesión</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-              <Button variant="warning" onClick={handleLogin}>Iniciar Sesión</Button>
-           
+            {inicioSesion ? (
+              <h6>Hola, {inicioSesion}</h6>
+            ) : (
+              <Button variant="warning" onClick={handleLogin}>
+                Iniciar Sesión
+              </Button>
+            )}
+
           </Navbar.Collapse>
         </Container>
       </Navbar>
