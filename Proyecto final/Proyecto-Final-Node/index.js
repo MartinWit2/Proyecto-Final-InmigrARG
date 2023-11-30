@@ -23,13 +23,13 @@ app.get("/Vivienda", async (req, res) => {
 });
 
 // GET BY ID
-/*
-app.get("/Vivienda/:id", async (req, res) => {
+
+app.get("/ViviendaById/:id", async (req, res) => {
   console.log(req.params.id);
   let vivienda = await ViviendaServices.getById(req.params.id);
   res.status(200).send(vivienda);
 });
-*/
+
 app.get("/Vivienda/:id", async (req, res) => {
   console.log("entramos a viviendo/Id")
   console.log(req.params.id);
@@ -54,7 +54,7 @@ app.post("/Vivienda", async (req, res) => {
 app.put("/Vivienda/:id", async (req, res) => {
   console.log("En update, req:", req.body);
   try {
-    await ViviendaServices.update(req.params.id, req.body);
+    await ViviendaServices.update(req.body.Id, req.body);
     res.status(200).json({ message: "Vivienda actualizada" });
   } catch (error) {
     console.error(error);

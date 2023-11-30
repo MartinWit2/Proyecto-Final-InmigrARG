@@ -9,6 +9,7 @@ import Home from '../Home/Home'
 import logo from '../logo.svg';
 import './App.css';
 import Perfil from '../Perfil/Perfil';
+import EditarVivienda from '../EditarVivienda/EditarVivienda';
 import { UserProvider } from '../User/UserContext';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/Registro" element={<Registro />} />
             <Route path="/Perfil" element={<Perfil />} />
+            <Route path="/EditarVivienda/:s" element={<EditarVivienda />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>

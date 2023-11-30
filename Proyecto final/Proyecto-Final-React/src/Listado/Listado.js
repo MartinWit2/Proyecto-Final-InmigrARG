@@ -1,13 +1,18 @@
 import "./Listado.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import axios from "axios";
 
 const Listado = () => {
   const [viviendas, setViviendas] = useState([]);
+  const [viviendasFiltradas, setViviendasFiltradas] = useState([]);
   const [viviendaSeleccionada, setViviendaSeleccionada] = useState(null);
   const [formularioVisible, setFormularioVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const navigate = useNavigate();
+  let pepe =[];
   const [formData, setFormData] = useState({
     direccion: "",
     barrio: "",
@@ -22,139 +27,81 @@ const Listado = () => {
   
 
   useEffect(() => {
-    axios.get("http://localhost:5000/Vivienda/1").then((res) => {
+    axios.get("http://localhost:5000/Vivienda").then((res) => {
       console.log(res.data);
+      pepe = res.data;
       setViviendas(res.data);
+      setViviendasFiltradas(res.data);
+      
     });
   }, []);
 
   const handleEditar = (vivienda) => {
     console.log(vivienda);
-    setFormularioVisible(!formularioVisible);
+    //setFormularioVisible(!formularioVisible);
+    navigate('/EditarVivienda/' + vivienda.Id);
     
   };
- /*
-  <form onSubmit={handleSubmit}>
-      <label>
-        Dirección:
-        <input
-          type="text"
-          name="direccion"
-          value={formData.direccion}
-          onChange={handleChange}
-          placeholder="Ingrese la dirección"
-        />
-      </label>
 
-      <label>
-        Barrio:
-        <input
-          type="text"
-          name="barrio"
-          value={formData.barrio}
-          onChange={handleChange}
-          placeholder="Ingrese el barrio"
-        />
-      </label>
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((formData) => ({
+      ...formData,
+      [name]: value,
+    }));
 
-      <label>
-        Tipo de Vivienda:
-        <input
-          type="text"
-          name="tipoVivienda"
-          value={formData.tipoVivienda}
-          onChange={handleChange}
-          placeholder="Ingrese el tipo de vivienda"
-        />
-      </label>
+    const viviendasFiltradas = viviendas.filter((vivienda) =>
+      vivienda.Barrio.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      console.log(viviendasFiltradas);
+    // Actualizar el estado con las viviendas filtradas
+    setViviendas(viviendasFiltradas);
 
-      <label>
-        Metros Cuadrados Totales:
-        <input
-          type="text"
-          name="metrosCuadradosTotales"
-          value={formData.metrosCuadradosTotales}
-          onChange={handleChange}
-          placeholder="Ingrese los metros cuadrados totales"
-        />
-      </label>
 
-      <label>
-        Metros Cuadrados Cubierta:
-        <input
-          type="text"
-          name="metrosCuadradosCubierta"
-          value={formData.metrosCuadradosCubierta}
-          onChange={handleChange}
-          placeholder="Ingrese los metros cuadrados cubiertos"
-        />
-      </label>
+  };
 
-      <label>
-        Luminosidad:
-        <input
-          type="text"
-          name="luminosidad"
-          value={formData.luminosidad}
-          onChange={handleChange}
-          placeholder="Ingrese la luminosidad"
-        />
-      </label>
+  const editarVivienda = async (formData) => {
+  
+    let url = 'http://localhost:5000/Vivienda/';
+    return axios.put(url,formData);
+  };
 
-      <label>
-        Baños:
-        <input
-          type="text"
-          name="banios"
-          value={formData.banios}
-          onChange={handleChange}
-          placeholder="Ingrese la cantidad de baños"
-        />
-      </label>
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    editarVivienda(formData).then(() => {
+      navigate('/Viviendas');
+    });
+  };
 
-      <label>
-        Cocheras:
-        <input
-          type="text"
-          name="cocheras"
-          value={formData.cocheras}
-          onChange={handleChange}
-          placeholder="Ingrese la cantidad de cocheras"
-        />
-      </label>
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+    console.log(inputValue);
+    
+  };
+  const filtrarPorBarrio = (barrio) => {
+    const viviendasFiltradas = viviendas.filter((vivienda) =>
+      vivienda.Barrio.toLowerCase().includes(barrio.toLowerCase())
+    );
+    // Actualizar el estado con las viviendas filtradas
+    //console.log(viviendasFiltradas.length);
+    setViviendasFiltradas(viviendasFiltradas);
+  };
 
-      <label>
-        Ambientes:
-        <input
-          type="text"
-          name="ambientes"
-          value={formData.ambientes}
-          onChange={handleChange}
-          placeholder="Ingrese la cantidad de ambientes"
-        />
-      </label>
-
-      <button type="submit">Enviar</button>
-    </form>
  
- 
- */
   return (
     <div className="card-container">
-      {viviendas.map((viv, index) => (
-        <div className="card-container" key={index}>
-          {formularioVisible && viviendaSeleccionada && (
-            <div>
-                
-                <button onClick={() => handleEditar(viv)}>Editar</button>
+       <div>
+      {/* Input para el filtro de barrio */}
+      <input
+        type="text"
+        onChange={(e) => filtrarPorBarrio(e.target.value)}
+        placeholder="Filtrar por barrio..."
+      />
 
-              {/* Renderiza un formulario de edición con la viviendaSeleccionada */}
-              {/* Puedes pasar la viviendaSeleccionada como prop al formulario de edición */}
-              {/* Por ejemplo, podrías usar un componente de formulario de edición */}
-              {/* <EdicionForm vivienda={viviendaSeleccionada} /> */}
-            </div>
-          )}
-          {!formularioVisible && (
+
+    </div>
+      {viviendasFiltradas.map((viv, index) => (
+        <div className="card-container" key={index}>
             <Card className="card">
               <div className="card-content">
                 <Card.Title className="card-title">{viv.Direccion}</Card.Title>
@@ -177,7 +124,7 @@ const Listado = () => {
                 <button onClick={() => handleEditar(viv)}>Editar</button>
               </div>
             </Card>
-          )}
+          
         </div>
       ))}
     </div>
