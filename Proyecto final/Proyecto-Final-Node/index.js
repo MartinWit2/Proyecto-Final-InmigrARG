@@ -76,6 +76,21 @@ app.delete("/Vivienda/:id", async (req, res) => {
 
 //Usuarioooooo
 
+app.post("/Usuario/login", async (req, res) => {
+  let data = req.body;
+  console.log("llega al back:"+ JSON.stringify(data))
+  //console.log("llega al back",req.body.Mail);
+  
+  //let Usuario = await UsuarioServices.getById(req.body.Mail);
+  let usuario = await UsuarioServices.tryLogin(req.body);
+  /*
+  if (Usuario)
+    res.status(200).send(Usuario);
+  */
+    res.status(200).send(usuario);
+  /*res.status(404).send()*/
+});
+
 app.post("/Usuario/:usuario", async (req, res) => {
   let data = req.body;
   console.log("llega al back:"+ JSON.stringify(data))
@@ -105,6 +120,7 @@ app.get("/Usuario/:email", async (req, res) => {
     res.status(200).send(respuesta);
   /*res.status(404).send()*/
 });
+
 
 
 

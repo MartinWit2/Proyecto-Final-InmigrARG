@@ -27,6 +27,13 @@ function Layout() {
     navigate('/Login');
 
   };
+
+  const cerrarSesion = () => {
+    localStorage.setItem('nombreUsuario', JSON.stringify( null));
+    localStorage.setItem('IdUsuario', JSON.stringify( null));
+  }
+
+
   return (
     <>
       <Navbar expand="lg" className="navBar1">
@@ -41,7 +48,7 @@ function Layout() {
               <Nav.Link as={Link} to="/Viviendas">Viviendas</Nav.Link>
               <Nav.Link as={Link} to="/Form">Publicar Vivienda</Nav.Link>
               <NavDropdown title="Usuario" id="NavBarDown">
-                <NavDropdown.Item href="/Login" onClick={()=>{localStorage.setItem('nombreUsuario', JSON.stringify( null));}}>Cerrar Sesión</NavDropdown.Item>
+                <NavDropdown.Item href="/Login" onClick={()=>{ cerrarSesion() }}>Cerrar Sesión</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             {inicioSesion ? (

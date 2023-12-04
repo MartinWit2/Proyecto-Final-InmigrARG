@@ -27,7 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/Registro" element={<Registro />} />
             <Route path="/Perfil" element={<Perfil />} />
-            <Route path="/EditarVivienda/:s" element={<EditarVivienda />} />
+            <Route path="/EditarVivienda/:id" element={<EditarVivienda />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>

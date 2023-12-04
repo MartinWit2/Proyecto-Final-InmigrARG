@@ -61,7 +61,7 @@ class ViviendaServices {
                 let pool = await sql.connect(config);
                 let result = await pool.request()
                     .input('pDireccion',Vivienda.Direccion)
-                    .input('pIdUsuario',1/*vivienda.IdUsuario*/)
+                    .input('pIdUsuario',Vivienda.IdUsuario)
                     .input('pBarrio',Vivienda.Barrio)
                     .input('pTipoVivienda',Vivienda.TipoVivienda)
                     .input('pMetrosCuadradosTotales',Vivienda.MetrosCuadradosTotales)

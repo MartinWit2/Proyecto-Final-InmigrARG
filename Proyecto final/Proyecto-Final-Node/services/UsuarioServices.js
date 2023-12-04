@@ -3,6 +3,26 @@ import sql from 'mssql';
 
 class UsuarioServices{
 
+    static tryLogin = async (usuario) => {
+        {
+            console.log("FLECHAAA", usuario);
+            let returnEntity = null;
+            //console.log(`Estoy en: UsuarioServices.GetById ${id}`);
+            try {
+                let pool = await sql.connect(config);
+                let result = await pool.request()
+                    .input('pMail', usuario.email)
+                    .input('pPass', usuario.password)
+                    .query('SELECT * FROM Usuario WHERE Mail = @pMail AND Contraseña = @pPass');
+                returnEntity = result.recordsets[0][0];
+            } catch (error) {
+                console.log(error);
+            }
+            console.log("encontro mail", JSON.stringify(returnEntity))
+            return returnEntity;
+
+        }
+    }
 
 
     static getById = async (Mail, Contraseña) => {

@@ -15,6 +15,7 @@ function FormVivienda() {
     setObjVivienda((prevObj) => ({
       ...prevObj,
       [name]: value,
+      IdUsuario: JSON.parse(localStorage.getItem("IdUsuario"))
     }));
 
   };

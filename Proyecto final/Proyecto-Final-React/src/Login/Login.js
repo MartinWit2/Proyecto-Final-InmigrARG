@@ -27,13 +27,14 @@ function Login() {
 
 const handleLogin = async () => {
   try {
-    const url = 'http://localhost:5000/Usuario/' + email;
-    const response = await axios.get(url);
+    const url = 'http://localhost:5000/Usuario/Login';
+    const response = await axios.post(url, { email, password });
 
     if (response.data === "") {
       alert("Usuario inexistente");
     } else {
       localStorage.setItem('nombreUsuario', JSON.stringify(email));
+      localStorage.setItem('IdUsuario', JSON.stringify(response.data.Id));
       navigate('/');
     }
   } catch (error) {
